@@ -12,3 +12,6 @@ Import-CSV d:\email.csv | % { Add-RecipientPermission $_.mail -Trustee sendas@co
 
 Remove
 Import-CSV d:\email.csv | % {Remove-RecipientPermission $_.mail -Trustee vision@contoso.com -AccessRights SendAs }
+
+Get report
+Get-RecipientPermission | Where {($_.Trustee -ne 'nt authority\self') } | select Identity, Trustee, AccessRights
